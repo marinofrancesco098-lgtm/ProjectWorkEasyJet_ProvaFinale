@@ -1,0 +1,12 @@
+Questo repository contiene il file SQL `ProjectWorkEasyJetDatabase.sql` con la definizione del database relazionale progettato per il processo di vendita dei biglietti EasyJet.
+
+## Contenuto
+- Creazione delle tabelle principali (Passeggero, Prenotazione, Biglietto, Volo, ecc.)
+- Definizione delle chiavi primarie ed esterne
+- Vincoli di integrità
+- Tabelle per servizi extra e gestione degli scali
+
+## Utilizzo
+Per importare il database in MySQL:
+```bash
+mysql -u username -p < ProjectWorkEasyJetDatabase.sql
