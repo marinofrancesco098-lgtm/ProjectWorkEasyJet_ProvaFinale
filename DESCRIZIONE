@@ -9,4 +9,4 @@ Questo repository contiene il file SQL `ProjectWorkEasyJetDatabase.sql` con la d
 ## Utilizzo
 Per importare il database in MySQL:
 ```bash
-mysql -u username -p < ProjectWorkEasyJetDatabase.sql
+mysql -u marinofrancesco098-lgtm -p < ProjectWorkEasyJetDatabase.sql
