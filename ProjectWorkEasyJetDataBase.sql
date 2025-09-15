@@ -26,7 +26,7 @@ CREATE TABLE Pagamento (
     Importo DECIMAL(8,2) NOT NULL,
     MetodoPagamento VARCHAR(30) NOT NULL,
     DataPagamento DATE NOT NULL,
-    Esito ENUM('confermato', 'negato', 'in attesa') NOT NULL,
+    Esito ENUM('confermato', 'negato', 'in attesa'),
     FOREIGN KEY (IDprenotazione) REFERENCES Prenotazione(IDprenotazione)
 );
 
@@ -70,7 +70,7 @@ CREATE TABLE Volo (
     IDaereo INT NOT NULL,
     DataPartenza DATE NOT NULL,
     OraPartenza TIME NOT NULL,
-    Stato ENUM('programmato', 'in ritardo', 'cancellato') NOT NULL,
+    Stato ENUM('programmato', 'in ritardo', 'cancellato'),
     FOREIGN KEY (IDsegmento) REFERENCES SegmentoTratta(IDsegmento),
     FOREIGN KEY (IDaereo) REFERENCES Aereo(IDaereo)
 );
@@ -80,7 +80,7 @@ CREATE TABLE Biglietto (
     IDprenotazione INT NOT NULL,
     IDvolo INT NOT NULL,
     Prezzo DECIMAL(8,2) NOT NULL,
-    Stato ENUM('valido', 'cancellato', 'modificato') NOT NULL,
+    Stato ENUM('valido', 'cancellato', 'modificato'),
     Codice_biglietto VARCHAR(20) NOT NULL,
     FOREIGN KEY (IDprenotazione) REFERENCES Prenotazione(IDprenotazione),
     FOREIGN KEY (IDvolo) REFERENCES Volo(IDvolo)
