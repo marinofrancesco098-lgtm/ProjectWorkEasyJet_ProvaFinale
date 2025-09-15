@@ -1,10 +1,17 @@
 --	Visualizzare tutti i voli programmati per '15/09/2025'
-SELECT Volo.IDvolo, Aeroporto.Città, Aeroporto.Città, Volo.DataPartenza, Volo.OraPartenza, Volo.Stato
+SELECT Volo.IDvolo,
+       AeroportoPartenza.Città AS CittàPartenza,
+       AeroportoArrivo.Città AS CittàArrivo,
+       Volo.DataPartenza,
+       Volo.OraPartenza,
+       Volo.Stato
 FROM Volo
 JOIN SegmentoTratta ON Volo.IDsegmento = SegmentoTratta.IDsegmento
-JOIN Aeroporto ON SegmentoTratta.IDaeroportoPartenza = Aeroporto.IDaeroporto
-JOIN Aeroporto ON SegmentoTratta.IDaeroportoArrivo = Aeroporto.IDaeroporto
-WHERE Volo.DataPartenza = '15/09/2025' AND Volo.Stato = 'programmato';
+JOIN Aeroporto AS AeroportoPartenza ON SegmentoTratta.IDaeroportoPartenza = AeroportoPartenza.IDaeroporto
+JOIN Aeroporto AS AeroportoArrivo ON SegmentoTratta.IDaeroportoArrivo = AeroportoArrivo.IDaeroporto
+WHERE Volo.DataPartenza = '2025-09-15'
+  AND Volo.Stato = 'programmato';
+
 
 --	Ricavi totali per ogni volo
 SELECT Volo.IDvolo,
@@ -35,14 +42,17 @@ WHERE Pagamento.Esito = 'in attesa';
 
 --	Voli programmati in partenza da un certo aeroporto
 SELECT Volo.IDvolo,
-       Aeroporto.Nome AS AeroportoPartenza,
+       AeroportoPartenza.Nome AS AeroportoPartenza,
+       AeroportoArrivo.Nome AS AeroportoArrivo,
        Volo.DataPartenza,
        Volo.OraPartenza
 FROM Volo
 JOIN SegmentoTratta ON Volo.IDsegmento = SegmentoTratta.IDsegmento
-JOIN Aeroporto ON SegmentoTratta.IDaeroportoPartenza = Aeroporto.IDaeroporto
-WHERE Volo.Stato = 'programmato' 
+JOIN Aeroporto AS AeroportoPartenza ON SegmentoTratta.IDaeroportoPartenza = AeroportoPartenza.IDaeroporto
+JOIN Aeroporto AS AeroportoArrivo ON SegmentoTratta.IDaeroportoArrivo = AeroportoArrivo.IDaeroporto
+WHERE Volo.Stato = 'programmato'
 ORDER BY Volo.DataPartenza, Volo.OraPartenza;
+
 
 --  Spesa totale per ogni passeggero (biglietti + servizi extra)
 SELECT Passeggero.IDpasseggero,
