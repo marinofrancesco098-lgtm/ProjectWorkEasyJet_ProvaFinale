@@ -15,7 +15,7 @@ CREATE TABLE Prenotazione (
     IDpasseggero INT NOT NULL,
     IDvolo INT NOT NULL,
     DataPrenotazione DATE NOT NULL,
-    Stato ENUM('attiva', 'cancellata', 'modificata') NOT NULL,
+    Stato ENUM('attiva', 'cancellata', 'modificata'),
     FOREIGN KEY (IDpasseggero) REFERENCES Passeggero(IDpasseggero),
     FOREIGN KEY (IDvolo) REFERENCES Volo(IDvolo)
 );
