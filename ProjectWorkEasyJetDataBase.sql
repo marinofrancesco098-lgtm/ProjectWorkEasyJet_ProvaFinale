@@ -81,7 +81,7 @@ CREATE TABLE Biglietto (
     IDvolo INT NOT NULL,
     Prezzo DECIMAL(8,2) NOT NULL,
     Stato ENUM('valido', 'cancellato', 'modificato'),
-    Codice_biglietto VARCHAR(20) NOT NULL,
+    CodiceBiglietto VARCHAR(20) NOT NULL,
     FOREIGN KEY (IDprenotazione) REFERENCES Prenotazione(IDprenotazione),
     FOREIGN KEY (IDvolo) REFERENCES Volo(IDvolo)
 );
